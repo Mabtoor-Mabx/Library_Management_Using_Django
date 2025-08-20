@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors and Books</title>
+</head>
+<body>
+    <h1> Authors and Their Books </h1>
+
+    <a href="{% url "add_book" %}"> Add New Book </a>
+   <hr>
+   {% for author in authors %}      
+   
+   <h2> Author Name is : {{author.name}} </h2>
+   <p> Its Bio is : {{author.bio}} </p>
+   <ul>
+    {% for book in  author.books.all  %}
+    <li> {{book.title}} ({{book.publisted_date}}) </li>
+
+    {%empty%}
+    <li>  No Books Yet.</li>
+    {% endfor %}
+   </ul>
+
+   
+   {% endfor %} 
+</body>
+</html>
